@@ -64,7 +64,7 @@ invest-advisor/
 
 ```bash
 cd backend
-pip install -r requirements.txt --extra-index-url https://opensource.tbank.ru/api/v4/projects/238/packages/pypi/simple
+pip install -r requirements.txt --extra-index-url https://opensource.tbank.ru/api/v4/projects/238/packages/pypi/simple --trusted-host opensource.tbank.ru
 cp ../.env.example .env        # заполните TINVEST_TOKEN и пр.
 PYTHONPATH=. uvicorn app.main:app --host 0.0.0.0 --port 8085
 ```

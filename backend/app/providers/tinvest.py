@@ -3,9 +3,9 @@ import logging
 from typing import Dict, List, Tuple, Any, Optional
 from cachetools import TTLCache
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-from tinkoff.invest import Client, InstrumentIdType
-from tinkoff.invest.exceptions import RequestError
-from tinkoff.invest.utils import quotation_to_decimal
+from t_tech.invest import Client, InstrumentIdType
+from t_tech.invest.exceptions import RequestError
+from t_tech.invest.utils import quotation_to_decimal
 
 from .base import BrokerProvider
 from ..models import PositionModel, ProviderHealth

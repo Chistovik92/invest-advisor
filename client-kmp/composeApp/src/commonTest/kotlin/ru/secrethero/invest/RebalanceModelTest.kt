@@ -40,6 +40,7 @@ class RebalanceModelTest {
     fun `rebalance plan dto parses orders`() {
         val raw = """
             {
+              "snapshot": {},
               "deposit_amount": 15000.0,
               "margin_debt_covered": 2848.31,
               "remaining_margin_debt": 0.0,

@@ -1,0 +1,62 @@
+name: Build Multiplatform Installers
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build Android APK
+        working-directory: client-kmp
+        run: gradle assembleRelease
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: client-kmp/composeApp/build/outputs/apk/release/*.apk
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install RPM & AppImage tools
+        run: sudo apt-get update && sudo apt-get install -y rpm fakeroot binutils
+      - name: Build DEB, RPM, AppImage
+        working-directory: client-kmp
+        run: gradle packageDeb packageRpm packageAppImage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-packages
+          path: |
+            client-kmp/composeApp/build/compose/binaries/main/deb/*.deb
+            client-kmp/composeApp/build/compose/binaries/main/rpm/*.rpm
+            client-kmp/composeApp/build/compose/binaries/main/appimage/*.AppImage
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build MSI & EXE
+        working-directory: client-kmp
+        run: gradle packageMsi packageExe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-installers
+          path: |
+            client-kmp/composeApp/build/compose/binaries/main/msi/*.msi
+            client-kmp/composeApp/build/compose/binaries/main/exe/*.exe

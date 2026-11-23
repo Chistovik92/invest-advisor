@@ -1,0 +1,46 @@
+portfolio_targets:
+  asset_classes:
+    stocks: 0.55
+    bonds_ofz_long: 0.25
+    bonds_short_float: 0.12
+    bonds_currency: 0.08
+
+  stocks:
+    SBER: { target_weight: 0.16, name: "Сбербанк" }
+    MDMG: { target_weight: 0.14, name: "Мать и дитя" }
+    X5:   { target_weight: 0.14, name: "ИКС 5" }
+    YDEX: { target_weight: 0.14, name: "Яндекс" }
+    T:    { target_weight: 0.12, name: "Т-Технологии", freeze_buy: true }
+    TATN: { target_weight: 0.10, name: "Татнефть" }
+    PRMD: { target_weight: 0.08, name: "Промомед" }
+    OZPH: { target_weight: 0.06, name: "Озон Фармацевтика" }
+    MOEX: { target_weight: 0.06, name: "Московская Биржа" }
+
+  bonds_to_buy:
+    - ticker: "SU26236RMFS8"
+      name: "ОФЗ 26236 (среднесрочная)"
+      group: "bonds_short_float"
+      weight: 0.40
+    - ticker: "SU29025RMFS2"
+      name: "ОФЗ 29025 (флоатер)"
+      group: "bonds_short_float"
+      weight: 0.60
+    - ticker: "RU000A105A04"
+      name: "Замещающая / валютная облигация"
+      group: "bonds_currency"
+      weight: 1.00
+
+  exit_candidates:
+    - { ticker: "WUSH", target_pnl_pct: 0.0 }
+    - { ticker: "TRMK", target_pnl_pct: 0.0 }
+    - { ticker: "ALRS", target_pnl_pct: 0.0 }
+    - { ticker: "VSEH", target_pnl_pct: 2.0 }
+    - { ticker: "RTKM", target_pnl_pct: 0.0 }
+    - { ticker: "HNFG", target_pnl_pct: 0.0 }
+    - { ticker: "ABRD", target_pnl_pct: 0.0 }
+
+external_holdings: []
+
+alerts:
+  drop_threshold_pct: 4.0
+  check_interval_minutes: 15

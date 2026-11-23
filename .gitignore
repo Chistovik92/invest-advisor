@@ -1,0 +1,15 @@
+.env
+_doc_full.txt
+*.docx
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+data/
+*.db
+*.sqlite
+client-kmp/.gradle/
+client-kmp/build/
+client-kmp/composeApp/build/
+local.properties
+.idea/

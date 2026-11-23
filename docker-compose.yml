@@ -1,0 +1,12 @@
+services:
+  invest-backend:
+    build: ./backend
+    container_name: invest-advisor-backend
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-8085}:8085"
+    env_file:
+      - .env
+    volumes:
+      - ./backend/config.yaml:/app/config.yaml
+      - ./data:/app/data

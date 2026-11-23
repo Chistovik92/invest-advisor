@@ -81,8 +81,8 @@ compose.desktop {
                 TargetFormat.AppImage
             )
             packageName = "InvestAdvisor"
-            packageVersion = "2.0.0"
-            description = "Мультиброкерный ребалансировщик портфеля РФ"
+            packageVersion = "1.0.0"
+            description = "Multi-broker portfolio rebalancer for RU market"
             vendor = "SecretHero"
 
             linux {
@@ -90,10 +90,12 @@ compose.desktop {
                 debMaintainer = "chistovik92@yandex.ru"
                 menuGroup = "Finance"
                 appCategory = "Finance"
+                iconFile.set(project.file("src/desktopMain/resources/icon.png"))
             }
             windows {
                 menuGroup = "InvestAdvisor"
                 upgradeUuid = "9a7b6c5d-4e3f-2a1b-8c9d-0e1f2a3b4c5d"
+                iconFile.set(project.file("src/desktopMain/resources/icon.ico"))
             }
         }
     }
